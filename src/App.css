@@ -1,0 +1,27 @@
+.app {
+  --portfolio-text: #25212b;
+  --portfolio-muted: #625b68;
+  --portfolio-accent: #7e2b60;
+  --portfolio-surface: #fff;
+  --portfolio-background: #fcf8fb;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  color: var(--portfolio-text);
+  background: var(--portfolio-background);
+  text-align: left;
+}
+
+.app main {
+  width: min(100% - 3rem, 1126px);
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .app main {
+    width: min(100% - 2rem, 1126px);
+  }
+}
