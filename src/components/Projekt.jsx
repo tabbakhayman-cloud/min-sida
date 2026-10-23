@@ -2,26 +2,42 @@ import './Projekt.css';
 import ProjektKort from './Projektkort';
 import bild1 from '../assets/Hero1.jpg';
 
+// 1. Skapa en array med projektdata och unika id-värden
+const minaProjekt = [
+  {
+    id: 1,
+    titel: "Min portfoliosida",
+    text: "Sidan du tittar på nu, byggd med React och Vite.",
+    bild: bild1
+  },
+  {
+    id: 2,
+    titel: "Kontaktformulär",
+    text: "Formulär med useState, validering och tackmeddelande.",
+    bild: bild1
+  },
+  {
+    id: 3,
+    titel: "Statisk sida",
+    text: "Min första sida i ren HTML och CSS.",
+    bild: bild1
+  }
+];
+
 function Projekt() {
   return (
     <section className="projekt" id="projekt">
       <h2>Mina projekt</h2>
       <div className="projekt-grid">
-        <ProjektKort 
-          titel="Min portfoliosida" 
-          text="Sidan du tittar på nu, byggd med React och Vite." 
-          bild={bild1} 
-        />
-        <ProjektKort 
-          titel="Projekt 2" 
-          text="Kommer snart." 
-          bild={bild1} 
-        />
-        <ProjektKort 
-          titel="Projekt 3" 
-          text="Kommer snart." 
-          bild={bild1} 
-        />
+        {/* 2. Använd .map() för att automatiskt skapa projektkort med en unik key */}
+        {minaProjekt.map((p) => (
+          <ProjektKort 
+            key={p.id} 
+            titel={p.titel} 
+            text={p.text} 
+            bild={p.bild} 
+          />
+        ))}
       </div>
     </section>
   );

@@ -5,6 +5,13 @@
   padding: 15px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* إضافة تأثير الانتقال السلس للحركة */
+}
+
+/* تأثير الرفع عند تمرير الماوس (Block 3) */
+.projekt-kort:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .projekt-kort img {
@@ -23,4 +30,17 @@
 .projekt-kort p {
   color: #666;
   font-size: 0.95rem;
+}
+
+/* تنسيق شارة التقنية Badge (Block 3) */
+.teknik-badge {
+  display: inline-block;
+  background-color: #7e2b60;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
