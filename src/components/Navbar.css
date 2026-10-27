@@ -4,24 +4,80 @@
   align-items: center;
   padding: 16px 32px;
   background-color: #1e293b;
+  border-bottom: 1px solid #334155;
+  position: relative;
 }
 
 .logo {
   color: white;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 .lankar {
   display: flex;
-  gap: 24px;                        /* avstånd mellan länkarna */
+  gap: 25px;                        /* avstånd mellan länkarna */
 }
 
 .lankar a {
-  color: white;
+  color: #cbd5e1;
   text-decoration: none;            /* tar bort understrykningen */
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
 .lankar a:hover {
+  color: #f43f5e;
   text-decoration: underline;
+}
+
+/* NavLink تضع تلقائياً كلاس active للصفحة الحالية */
+.lankar a.active {
+  font-weight: 700;
+  color: #f43f5e;
+  border-bottom: 2px solid #f43f5e;
+  padding-bottom: 2px;
+}
+
+/* زر الهامبرجر مخفي افتراضياً على شاشات الكمبيوتر */
+.meny-knapp {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+}
+
+/* التجاوب مع شاشات الموبايل */
+@media (max-width: 700px) {
+  .meny-knapp {
+    display: block;
+  }
+
+  .lankar {
+    display: none; /* إخفاء الروابط افتراضياً على الموبايل */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+  }
+.lankar a {
+    color: #334155;
+  }
+
+  .lankar a:hover,
+  .lankar a.active {
+    color: #7e2b60;
+    border-bottom: 2px solid #7e2b60;
+  }
+  /* إظهار القائمة عندما يتم النقر على الزر وتفعيل حالة oppen */
+  .lankar.oppen {
+    display: flex;
+  }
 }

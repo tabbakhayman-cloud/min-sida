@@ -1,5 +1,7 @@
 import './Hero.css';
 import heroBild from '../assets/Hero1.jpg';
+import { Link } from "react-router-dom";
+<Link className="hero-knapp" to="/projekt">Se mina projekt</Link>
 
 function Hero({ namn }) {
   return (

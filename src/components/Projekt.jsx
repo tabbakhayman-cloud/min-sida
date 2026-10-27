@@ -1,6 +1,8 @@
 import './Projekt.css';
 import ProjektKort from './Projektkort';
 import bild1 from '../assets/Hero1.jpg';
+import bild2 from '../assets/Hero2.jpg';
+import bild3 from '../assets/Hero3.jpg';
 
 // 1. Skapa en array med projektdata och unika id-värden
 const minaProjekt = [
@@ -14,13 +16,13 @@ const minaProjekt = [
     id: 2,
     titel: "Kontaktformulär",
     text: "Formulär med useState, validering och tackmeddelande.",
-    bild: bild1
+    bild: bild2
   },
   {
     id: 3,
     titel: "Statisk sida",
     text: "Min första sida i ren HTML och CSS.",
-    bild: bild1
+    bild: bild3
   }
 ];
 
