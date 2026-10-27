@@ -4,8 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hem from "./pages/Hem";
 import OmMig from "./pages/OmMig";
-import Kontakt from "./pages/Kontakt";
 import ProjektSida from "./pages/ProjektSida";
+import Kontakt from "./pages/Kontakt";
 import EjHittad from "./pages/EjHittad";
 
 function App() {
