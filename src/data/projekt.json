@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "titel": "Min sida",
+    "text": "Sidan du tittar på nu. Byggd med React och CSS.",
+    "bild": "Hero1.jpg",
+    "lank": "https://github.com/Jaymzpham/min-sida",
+    "teknik": ["React", "CSS", "Git"]
+  },
+  {
+    "id": 2,
+    "titel": "Kontaktformulär",
+    "text": "Formulär med useState, validering och tackmeddelande.",
+    "bild": "Hero2.jpg",
+    "lank": "/kontakt",
+    "teknik": ["React", "useState"]
+  },
+  {
+    "id": 3,
+    "titel": "Statisk sida",
+    "text": "Min första sida i ren HTML och CSS.",
+    "bild": "Hero3.jpg",
+    "lank": "#",
+    "teknik": ["HTML", "CSS"]
+  },
+  {
+    "id": 4,
+    "titel": "Räknare",
+    "text": "Räknare med + och –, nollställning och färg som ändras.",
+    "bild": "Hero4.png",
+    "lank": "#",
+    "teknik": ["React", "useState"]
+  }
+]

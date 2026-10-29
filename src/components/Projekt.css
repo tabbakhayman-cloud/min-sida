@@ -1,19 +1,94 @@
 .projekt {
   padding: 40px 20px;
-  background-color: #f9f9f9;
-  text-align: center;
+  background-color: #ede9f6;
+  
 }
 
-.projekt h2 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.projekt-grid {
+.projekt-lista {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+/* إجبار أي بطاقة مشروع على أخذ شكل مرتب */
+.projekt-kort, .projekt-item {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+/* القاعدة الأكيدة لجميع صور المشاريع: ارتفاع ثابت ومحدد */
+.projekt img {
+  width: 100%;
+  height: 220px;          /* ارتفاع ثابت يمنع امتداد الصورة بشكل نحيف */
+  object-fit: cover;      /* لتعبئة المساحة باحترافية ودون تشويه */
+}
+
+/* تنسيق أزرار الفلترة */
+.projekt-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filter-knapp {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 2px solid #7e2b60;
+  border-radius: 999px;
+  background-color: #ffffff;
+  color: #7e2b60;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-knapp:hover {
+  background-color: #ede9f6;
+}
+
+.filter-knapp.aktiv {
+  background-color: #7e2b60;
+  color: #fcf6fa;
+}
+
+/* تنسيق شريط البحث */
+.projekt-sok {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 320px;
+  margin: 0 auto 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.projekt-sok input {
+  padding: 10px 12px;
+  border: 1px solid #c9bfd8;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.projekt-antal {
+  margin-bottom: 24px;
+  color: #6b6480;
+  font-size: 14px;
+}
+
+.projekt-tom {
+  padding: 32px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+@media (min-width: 600px) {
+  .projekt {
+    padding: 64px 32px;
+  }
 }

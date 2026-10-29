@@ -1,9 +1,12 @@
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: 1fr;      /* mobil: bild under text */
   align-items: center;
-  gap: clamp(2rem, 6vw, 5rem);
-  padding: clamp(4rem, 10vw, 8rem) 0;
+  gap: 32px;
+  padding: 40px 20px 48px;
+  text-align: left;
+  background-color: #fdf1f8;
+  color: #3e3a4e;
 }
 
 .hero-innehall {
@@ -62,11 +65,11 @@
   color: var(--portfolio-accent);
 }
 
-@media (max-width: 700px) {
+@media (min-width: 800px) {
   .hero {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 4rem 0;
+    grid-template-columns: 1fr 1fr;  /* desktop: bild bredvid text */
+    gap: 40px;
+    padding: 64px 32px 72px;
   }
 
   .hero-image {

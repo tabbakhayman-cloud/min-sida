@@ -1,16 +1,21 @@
 .kontakt {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  padding: 64px 32px;
+  grid-template-columns: 1fr; /* الموبايل أولاً: عمود واحد */
+  gap: 32px;
+  padding: 40px 20px;
   max-width: 1100px;
   margin: 0 auto;
   align-items: start;
 }
 
+.kontakt-info {
+  text-align: left;
+}
+
 .kontakt-info h2 {
   font-size: 32px;
-  margin-bottom: 16px;
+  font-weight: 700;
+  margin: 0 0 16px;
   color: #261f3a;
 }
 
@@ -21,6 +26,11 @@
 }
 
 .kontakt-form {
+  padding: 28px;
+  background: #faf7fb;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column; 
   gap: 12px;
@@ -30,6 +40,7 @@
   font-weight: 600;
   color: #261f3a;
   font-size: 14px;
+  text-align: left;
 }
 
 .kontakt-form input,
@@ -45,9 +56,11 @@
 .kontakt-form textarea:focus {
   outline: none;
   border-color: #7e2b60;
+  box-shadow: 0 0 0 3px rgba(126, 43, 96, 0.15);
 }
 
 .kontakt-form button {
+  transition: background-color 160ms ease, transform 160ms ease;
   padding: 12px 24px;
   background-color: #7e2b60;
   color: white;
@@ -57,17 +70,46 @@
   font-weight: bold;
   cursor: pointer;
   margin-top: 8px;
+  /* التأكد من أن مساحة الزر مريحة للضغط بالاصبع (Tumvänlig) */
+  min-height: 44px; 
 }
 
-.kontakt-form button:hover {
+.kontakt-form button:hover:not(:disabled) {
   background-color: #5c1f46;
+  transform: translateY(-2px);
 }
 
-/* Responsiv design */
-@media (max-width: 800px) {
+.kontakt-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fel-meddelande {
+  color: #d32f2f;
+  margin: 0;
+  font-size: 14px;
+}
+
+.success-meddelande {
+  padding: 48px 28px;
+  background: #e8f5e9;
+  color: #1b5e20;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* للشاشات الأكبر (من 800px فصاعداً): عمودان جنباً إلى جنب */
+@media (min-width: 800px) {
   .kontakt {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 40px 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding: 64px 32px;
   }
 }
