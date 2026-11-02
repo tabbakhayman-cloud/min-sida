@@ -1,36 +1,41 @@
 import { useState, useEffect } from "react";
 
-// رابط API لطقس هلسنبوري
-const API_URL = "https://api.open-meteo.com/v1/forecast?latitude=56.05&longitude=12.69&current=temperature_2m,wind_speed_10m";
+const VADER_URL = "https://api.open-meteo.com/v1/forecast?latitude=56.05&longitude=12.69&current=temperature_2m,wind_speed_10m";
 
 function Vader() {
   const [vaderData, setVaderData] = useState(null);
-  const [laddar, setLaddar] = useState(true);
+  const [laddار, setLaddar] = useState(true);
   const [fel, setFel] = useState("");
 
   useEffect(() => {
-    async function hamtaVader() {
+    async function hamtaDataSamtidigt() {
       try {
-        const svar = await fetch(API_URL);
-        if (!svar.ok) {
-          throw new Error("Feil vid hämtning");
+        // نستخدم Promise.all لإرسال الطلبات معاً في نفس الوقت
+        const [vaderSvar] = await Promise.all([
+          fetch(VADER_URL)
+        ]);
+
+        if (!vaderSvar.ok) {
+          throw new Error("Kunde inte hämta data");
         }
-        const data = await svar.json();
-        setVaderData(data.current);
+
+        const vaderJson = await vaderSvar.json();
+        setVaderData(vaderJson.current);
       } catch (err) {
-        setFel("Kunde inte hämta vädret just nu.");
+        setFel("Något gick fel vid hämtningen.");
       } finally {
         setLaddar(false);
       }
     }
-    hamtaVader();
+
+    hamtaDataSamtidigt();
   }, []);
 
   return (
     <section style={{ padding: "20px", margin: "20px 0", backgroundColor: "#f3f4f6", borderRadius: "8px" }}>
       <h2>Väder i Helsingborg</h2>
 
-      {laddar && <p>Laddar väder...</p>}
+      {laddار && <p>Laddar...</p>}
       {fel && <p style={{ color: "red" }}>{fel}</p>}
 
       {vaderData && (
