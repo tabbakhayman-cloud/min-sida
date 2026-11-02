@@ -21,3 +21,41 @@
   color: #b3261e;
   font-weight: 600;
 }
+
+.vader {
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+.vader h2 {
+  margin-bottom: 15px;
+  color: #1f2937;
+}
+
+/* استخدام Grid متجاوب يتكيف تلقائياً مع الشاشة */
+.vader-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.vader-kort {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.vader-kort h3 {
+  margin-top: 0;
+  color: #111827;
+}
+
+.vader-kort p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
