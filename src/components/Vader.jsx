@@ -1,16 +1,38 @@
 import "./Vader.css";
 import { useState, useEffect } from "react";
-
-// 1. قائمة المدن المحددة وموقعها الجغرافي
-const stader = [
-  { namn: "Helsingborg", lat: 56.05, lon: 12.69 },
-  { namn: "Stockholm", lat: 59.33, lon: 18.07 },
-  { namn: "Kiruna", lat: 67.86, lon: 20.23 },
-];
+import { STADER } from "../data/stader";
+import { grader } from "../utils/text";
 
 const BAS_URL = "https://api.open-meteo.com/v1/forecast";
 
-// 2. دالة مساعدة لجلب طقس مدينة واحدة
+// جدول رموز حالة الجو (تعديل 2)
+const vaderKoder = {
+  0: { text: "Klart", ikon: "☀️" },
+  1: { text: "Mestadels klart", ikon: "🌤️" },
+  2: { text: "Delvis molnigt", ikon: "⛅" },
+  3: { text: "Mulet", ikon: "☁️" },
+  45: { text: "Dimma", ikon: "🌫️" },
+  48: { text: "Dimma", ikon: "🌫️" },
+  51: { text: "Lätt duggregn", ikon: "🌦️" },
+  53: { text: "Duggregn", ikon: "🌦️" },
+  55: { text: "Kraftigt duggregn", ikon: "🌦️" },
+  61: { text: "Lätt regn", ikon: "🌧️" },
+  63: { text: "Regn", ikon: "🌧️" },
+  65: { text: "Kraftigt regn", ikon: "🌧️" },
+  71: { text: "Lätt snöfall", ikon: "🌨️" },
+  73: { text: "Snöfall", ikon: "🌨️" },
+  75: { text: "Kraftigt snöfall", ikon: "❄️" },
+  80: { text: "Regnskurar", ikon: "🌦️" },
+  81: { text: "Regnskurar", ikon: "🌦️" },
+  82: { text: "Kraftiga skurar", ikon: "🌧️" },
+  95: { text: "Åska", ikon: "⛈️" },
+};
+
+function hamtaVaderInfo(kod) {
+  return vaderKoder[kod] || { text: "Okänt", ikon: "❓" };
+}
+
+// 3. دالة جلب طقس مدينة واحدة
 async function hamtaStad(stad) {
   const url =
     BAS_URL +
@@ -18,7 +40,7 @@ async function hamtaStad(stad) {
     stad.lat +
     "&longitude=" +
     stad.lon +
-    "&current=temperature_2m,wind_speed_10m";
+    "&current=temperature_2m,wind_speed_10m,weather_code&wind_speed_unit=ms"; // تعديل 1
 
   const svar = await fetch(url);
 
@@ -28,16 +50,15 @@ async function hamtaStad(stad) {
 
   const data = await svar.json();
 
-  // تُرجع الأوبجكت المحسّن للمدينة
   return {
     namn: stad.namn,
     temp: data.current.temperature_2m,
     vind: data.current.wind_speed_10m,
+    kod: data.current.weather_code, // تعديل 2
   };
 }
 
 function Vader() {
-  // 3. تحويل الـ state إلى قائمة فارغة لتبدأ بها
   const [vader, setVader] = useState([]);
   const [laddar, setLaddar] = useState(true);
   const [fel, setFel] = useState("");
@@ -45,10 +66,9 @@ function Vader() {
   useEffect(() => {
     async function hamtaAllaStader() {
       try {
-        // 4. استخدام Promise.all لجلب كافة المدن بالتوازي وفي نفس اللحظة!
-        const resultat = await Promise.all(stader.map(hamtaStad));
+        const resultat = await Promise.all(STADER.map(hamtaStad));
         setVader(resultat);
-      } catch (err) {
+      } catch {
         setFel("Kunde inte hämta vädret för alla städer.");
       } finally {
         setLaddar(false);
@@ -65,15 +85,20 @@ function Vader() {
       {laddar && <p>Laddar vädret...</p>}
       {fel && <p role="alert">{fel}</p>}
 
-      {/* 5. عرض كارت مخصص لكل مدينة باستخدام map مع مفتاح unique (key) */}
       <div className="vader-grid">
-        {vader.map((stad) => (
-          <div key={stad.namn} className="vader-kort">
-            <h3>{stad.namn}</h3>
-            <p>🌡️ {stad.temp} °C</p>
-            <p>💨 {stad.vind} m/s</p>
-          </div>
-        ))}
+        {vader.map((stad) => {
+          const info = hamtaVaderInfo(stad.kod); // تعديل 4
+          return (
+            <div key={stad.namn} className="vader-kort">
+              <h3>{stad.namn}</h3>
+              <p>
+                {info.ikon} {info.text}
+              </p>
+              <p>🌡️ {grader(stad.temp)}</p>
+              <p>💨 {stad.vind} m/s</p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
