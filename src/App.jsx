@@ -7,7 +7,7 @@ import OmMig from "./pages/OmMig";
 import ProjektSida from "./pages/ProjektSida";
 import Kontakt from "./pages/Kontakt";
 import EjHittad from "./pages/EjHittad";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/Todo";
 
 function App() {
   return (

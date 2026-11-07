@@ -2,7 +2,9 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Projekt from "../components/Projekt";
 import GitHubRepon from "../components/GitHubRepon";
-import Vader from "../components/Vader"; // 1. استيراد المكون
+import Vader from "../components/Vader";
+import CityWeather from "../components/CityWeather"; // تعديل الحرف الكبير C و W
+import Todo from "../components/Todo"; // تعديل الحرف الكبير T
 
 function Hem() {
   return (
@@ -11,7 +13,9 @@ function Hem() {
       <Hero namn="Ayman" />
       <Projekt />
       <GitHubRepon />
-      <Vader /> {/* 2. عرضه في الصفحة */}
+      <CityWeather /> {/* تم تعديلها لتصبح بحرف كبير */}
+      <Todo />        {/* تم تعديلها لتصبح بحرف كبير وتم إزالة TodoItem الزائد */}
+      <Vader />
     </>
   );
 }
