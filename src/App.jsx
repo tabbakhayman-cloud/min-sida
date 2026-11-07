@@ -21,6 +21,7 @@ function App() {
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/projekt" element={<ProjektSida />} />
         <Route path="*" element={<EjHittad />} />
+        <Route path="/projekt/:id" element={<ProjektDetalj />} />
         
       </Routes>
 
