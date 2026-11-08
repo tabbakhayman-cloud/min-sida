@@ -93,6 +93,7 @@ function Projekt() {
           {sorteradeProjekt.map((p) => (
             <ProjektKort
               key={p.id}
+              id={p.id}
               titel={p.titel}
               text={p.text}
               bild={bilder[p.bild]}
