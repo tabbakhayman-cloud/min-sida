@@ -10,15 +10,23 @@ import bild1 from "../assets/Hero1.jpg";
 import bild2 from "../assets/Hero2.jpg";
 import bild3 from "../assets/Hero3.jpg";
 
-// ربط أسماء الصور في الJSON بالمتغيرات المستوردة
+// ربط أسماء الصور في الـ JSON بالمتغيرات المستوردة
 const bilder = {
   "Hero1.jpg": bild1,
   "Hero2.jpg": bild2,
   "Hero3.jpg": bild3,
 };
 
-// قائمة الأزرار الخاصة بالفلترة
-const filterLista = ["Alla", "React", "CSS", "HTML", "useState", "Git"];
+// إنشاء قائمة الأزرار ديناميكياً باستخدام حلقات for...of
+const filterLista = ["Alla"];
+
+for (const projekt of projektLista) {
+  for (const teknik of projekt.teknik) {
+    if (!filterLista.includes(teknik)) {
+      filterLista.push(teknik);
+    }
+  }
+}
 
 function Projekt() {
   const [vald, setVald] = useState("Alla");
@@ -32,7 +40,7 @@ function Projekt() {
     return rattTeknik && rattSok;
   });
 
-  // نأخذ نسخة من القائمة المفلترة ونرتبها حتى لا نغير الأصل
+  // نأخذ نسخة من القائمة المفلترة ونرتبها
   const sorteradeProjekt = [...synligaProjekt];
 
   if (sortering === "titel") {
@@ -45,6 +53,7 @@ function Projekt() {
     <section className="projekt" id="projekt">
       <h2>Mina projekt</h2>
 
+      {/* أزرار الفلترة الديناميكية */}
       <div className="projekt-filter">
         {filterLista.map((f) => (
           <button
@@ -69,7 +78,7 @@ function Projekt() {
         />
       </label>
 
-      {/* قائمة اختيار الترتيب (الجديدة) */}
+      {/* قائمة الترتيب */}
       <div className="projekt-sortering" style={{ margin: "15px 0" }}>
         <label>
           Sortera efter:{" "}
@@ -85,7 +94,7 @@ function Projekt() {
         Visar {sorteradeProjekt.length} av {projektLista.length} projekt
       </p>
 
-      {/* عرض المشاريع المرتبطة باستخدام sorteradeProjekt */}
+      {/* عرض قائمة المشاريع المرتبة والمفلترة */}
       {sorteradeProjekt.length === 0 ? (
         <p className="projekt-tom">Inga projekt matchar. Prova ett annat filter.</p>
       ) : (

@@ -6,13 +6,16 @@ function Kontakt() {
   const [epost, setEpost] = useState("");
   const [meddelande, setMeddelande] = useState("");
   const [skickat, setSkickat] = useState(false);
-  const [skickar, setSkickar] = useState(false); // حالة التحميل أثناء الإرسال
+  const [skickar, setSkickar] = useState(false);
   const [fel, setFel] = useState("");
 
+  const MAX_TECKEN = 500;
+  const kvar = MAX_TECKEN - meddelande.length;
+  const fardigt = meddelande.trim() !== "" && kvar >= 0;
+  
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // التحقق من الحقول
     if (namn.trim() === "" || epost.trim() === "" || meddelande.trim() === "") {
       setFel("Fyll i alla fält.");
       return;
@@ -24,7 +27,7 @@ function Kontakt() {
     }
 
     setFel("");
-    setSkickar(true); // تعطل الزر وتظهر "Skickar..."
+    setSkickar(true);
 
     try {
       const svar = await fetch("https://formspree.io/f/xyeewbop", {
@@ -47,11 +50,11 @@ function Kontakt() {
     } catch (err) {
       setFel("Kunde inte skicka. Kolla din internetanslutning.");
     } finally {
-      setSkickar(false); // يتم تشغيلها دائماً لإعادة تعطيل حالة التحميل
+      setSkickar(false);
     }
   }
 
-    return (
+  return (
     <section className="kontakt">
       <div className="kontakt-info">
         <h2>Kontakta mig</h2>
@@ -94,9 +97,15 @@ function Kontakt() {
             required
           />
 
+          {/* عداد الحروف المتبقية مع تغيير اللون إذا قلّت عن 50 */}
+          <p className={kvar < 50 ? "varning röd-text" : "tecken-info"} style={{ color: kvar < 50 ? "red" : "inherit" }}>
+            {kvar} tecken kvar
+          </p>
+
           {fel && <p className="fel-meddelande">{fel}</p>}
 
-          <button type="submit" disabled={skickar}>
+          {/* زر الإرسال معطل إذا لم تقم بملء الرسالة صحيحة أو أثناء الإرسال */}
+          <button type="submit" disabled={!fardigt || skickar}>
             {skickar ? "Skickar..." : "Skicka meddelande"}
           </button>
         </form>

@@ -1,6 +1,7 @@
 import './Hero.css';
 import heroBild from '../assets/Hero1.jpg';
 import { Link } from "react-router-dom";
+import { halsning } from '../utils/text';
 <Link className="hero-knapp" to="/projekt">Se mina projekt</Link>
 
 function Hero({ namn }) {
@@ -13,6 +14,7 @@ function Hero({ namn }) {
           Välkommen till min portfoliosida. Här kan du se några av mina projekt
           och vad jag arbetar med.
         </p>
+        <p className="hero-intro">{halsning()}, jag heter Ayman!</p>        
         <a className="hero-knapp" href="#projekt">Se mina projekt</a>
       </div>
       <img className="hero-image" src={heroBild} alt="En inspirerande bild för portfoliosidan" />

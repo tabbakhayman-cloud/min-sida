@@ -32,3 +32,18 @@ export const initialer = (namn) =>
     .split(" ")
     .map((word) => word[0])
     .join("");
+
+    export const halsning = () => {
+  const timme = new Date().getHours();
+  // (للاختبار المؤقت، يمكنك تجربة كتابة const timme = 21 أو timme = 3)
+
+  if (timme >= 0 && timme < 5) {
+    return "God natt";
+  } else if (timme < 10) {
+    return "God morgon";
+  } else if (timme < 18) {
+    return "Hej";
+  } else {
+    return "God kväll";
+  }
+};
