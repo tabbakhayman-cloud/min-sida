@@ -2,6 +2,7 @@ import { useState } from 'react';
 import "./OmMig.css";
 import minBild from "../assets/Bild.jpg";
 import Raknare from '../components/Raknare'; // 1. importera komponenten Raknare
+import Statistik from '../components/Statistik'; // 2. importera komponenten Statistik
 
 function OmMig() {
   // State för att styra om den extra texten visas eller inte
@@ -21,6 +22,8 @@ function OmMig() {
           Jag heter Ayman och går på Tech Trainee Talent, där jag lär mig att bygga för
           webben. Den här sidan är mitt första projekt i React.
         </p>
+        
+        <Statistik /> {/* 3. Visa komponenten Statistik här */}
 
         {/* Toggle-knapp */}
         <button 

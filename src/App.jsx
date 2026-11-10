@@ -9,13 +9,11 @@ import Kontakt from "./pages/Kontakt";
 import EjHittad from "./pages/EjHittad";
 import TodoList from "./components/Todo";
 import ProjektDetalj from "./pages/ProjektDetalj"; // أو حسب مسار الملف الصحيح لديك
-import Statistik from "./components/Statistik"; // استيراد مكون Statistik
 
 function App() {
   return (
     <>
       <Navbar />
-      <Statistik /> {/* إضافة مكون Statistik هنا */}
       
       <Routes>
         

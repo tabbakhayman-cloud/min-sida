@@ -2,21 +2,25 @@ import './Hero.css';
 import heroBild from '../assets/Hero1.jpg';
 import { Link } from "react-router-dom";
 import { halsning } from '../utils/text';
-<Link className="hero-knapp" to="/projekt">Se mina projekt</Link>
 
 function Hero({ namn }) {
   return (
     <section className="hero" aria-labelledby="hero-rubrik">
       <div className="hero-innehall">
         <p className="hero-etikett">Min portfolio</p>
-        <h1 id="hero-rubrik">Hej, jag heter {namn}.</h1>
+        
+        {/* العنوان الرئيسي أصبح ديناميكياً يتغير حسب الوقت (God morgon / Hej / God kväll) */}
+        <h1 id="hero-rubrik">{halsning()}, jag heter {namn}.</h1>
+        
         <p className="hero-text">
           Välkommen till min portfoliosida. Här kan du se några av mina projekt
           och vad jag arbetar med.
         </p>
-        <p className="hero-intro">{halsning()}, jag heter Ayman!</p>        
-        <a className="hero-knapp" href="#projekt">Se mina projekt</a>
+
+        {/* زر الانتقال تم وضعه في مكانه الصحيح داخل الـ return */}
+        <Link className="hero-knapp" to="/projekt">Se mina projekt</Link>
       </div>
+
       <img className="hero-image" src={heroBild} alt="En inspirerande bild för portfoliosidan" />
     </section>
   );
