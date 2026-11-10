@@ -8,7 +8,7 @@ import ProjektSida from "./pages/ProjektSida";
 import Kontakt from "./pages/Kontakt";
 import EjHittad from "./pages/EjHittad";
 import TodoList from "./components/Todo";
-import ProjektDetalj from "./pages/ProjektDetalj"; // أو حسب مسار الملف الصحيح لديك
+import ProjektDetalj from "./pages/ProjektDetalj"; // 1. importera komponenten ProjektDetalj
 
 function App() {
   return (
