@@ -1,6 +1,6 @@
 import "./Projekt.css";
 import { useState } from "react";
-import ProjektKort from "./ProjektKort";
+import ProjektKort from "./Projektkort";
 
 // استيراد بيانات المشاريع من ملف JSON
 import projektLista from "../data/projekt.json";
