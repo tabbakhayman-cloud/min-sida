@@ -10,6 +10,7 @@ import EjHittad from "./pages/EjHittad";
 import TodoList from "./components/Todo";
 import ProjektDetalj from "./pages/ProjektDetalj"; // 1. importera komponenten ProjektDetalj
 import MinServer from "./components/MinServer";
+import ProjektFranServer from "./components/ProjektFranServer";
 
 function App() {
   return (
@@ -17,15 +18,22 @@ function App() {
       <Navbar />
       
       <Routes>
-      <Route path="/" element={<Hem />} />
-      <Route path="/om-mig" element={<OmMig />} />
-      <Route path="/kontakt" element={<Kontakt />} />
-      <Route path="/projekt" element={<ProjektSida />} />
-      <Route path="/projekt/:id" element={<ProjektDetalj />} />
-      <Route path="/server" element={<MinServer />} />
-      <Route path="*" element={<EjHittad />} />
-      </Routes>
-
+    <Route path="/" element={<Hem />} />
+    <Route path="/om-mig" element={<OmMig />} />
+    <Route path="/kontakt" element={<Kontakt />} />
+    <Route path="/projekt" element={<ProjektSida />} />
+    <Route path="/projekt/:id" element={<ProjektDetalj />} />
+    <Route
+     path="/server"
+     element={
+      <>
+        <MinServer />
+        <ProjektFranServer />
+      </>
+    }
+  />
+   <Route path="*" element={<EjHittad />} />
+</Routes>
       <Footer />
       <TodoList />
     </>
