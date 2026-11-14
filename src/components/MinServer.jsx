@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function MinServer() {
   const [data, setData] = useState(null);
+  const [slump, setSlump] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -14,6 +15,13 @@ export default function MinServer() {
       .then((json) => setData(json))
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/slump")
+      .then((response) => response.json())
+      .then((json) => setSlump(json.slump))
+      .catch(() => {});
   }, []);
 
   if (loading) return <p>Laddar...</p>;
@@ -29,6 +37,7 @@ export default function MinServer() {
           <li key={i}>{i}</li>
         ))}
       </ul>
+      <p>Slumptal: {slump}</p>
     </div>
   );
 }
