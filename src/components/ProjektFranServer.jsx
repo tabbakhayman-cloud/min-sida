@@ -1,34 +1,55 @@
 import { useState, useEffect } from "react";
 
+const SERVER_URL = "http://localhost:3001/projekt";
+
 export default function ProjektFranServer() {
   const [projekt, setProjekt] = useState([]);
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3001/projekt")
-      .then((response) => {
-        if (!response.ok) throw new Error("Något gick fel");
-        return response.json();
-      })
-      .then((json) => setProjekt(json))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+    async function fetchProjects() {
+      try {
+        const response = await fetch(SERVER_URL);
+        if (!response.ok) {
+          throw new Error("Servern svarade med " + response.status);
+        }
+        const data = await response.json();
+        setProjekt(data);
+      } catch {
+        setError("Får inget svar från servern. Är den igång?");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProjects();
   }, []);
 
-  if (loading) return <p>Laddar...</p>;
-  if (error) return <p>Fel: {error}</p>;
+  async function deleteProject(id) {
+    try {
+      const response = await fetch(SERVER_URL + "/" + id, { method: "DELETE" });
+      if (!response.ok) {
+        throw new Error("Servern svarade med " + response.status);
+      }
+      setProjekt((prev) => prev.filter((p) => p.id !== id));
+    } catch {
+      setError("Kunde inte ta bort projektet. Är servern igång?");
+    }
+  }
 
   return (
-    <div>
-      <h2>Projekt från servern</h2>
+    <section>
+      <h2>Projekt från min server</h2>
+      {loading && <p>Hämtar projekt...</p>}
+      {error && <p role="alert">{error}</p>}
       <ul>
         {projekt.map((p) => (
           <li key={p.id}>
-            {p.titel} ({p.teknik})
+            {p.titel} ({p.teknik}){" "}
+            <button onClick={() => deleteProject(p.id)}>Ta bort</button>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }

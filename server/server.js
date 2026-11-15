@@ -7,6 +7,11 @@ const PORT = 3001;
 
 app.use(cors());
 
+app.use((req, res, next) => {
+  console.log(new Date().toLocaleTimeString("sv-SE"), req.method, req.url);
+  next();
+});
+
 app.get("/hej", (req, res) => {
   res.json({
     meddelande: "Hej från min egen server!",
@@ -56,6 +61,18 @@ app.get("/projekt/teknik/:namn", (req, res) => {
 
 app.get("/statistik", (req, res) => {
   res.json({ antal: projekt.length });
+});
+
+app.delete("/projekt/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const index = projekt.findIndex((p) => p.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ fel: "Projektet finns inte" });
+  }
+
+  projekt.splice(index, 1);
+  res.status(204).end();
 });
 
 app.listen(PORT, () => {
