@@ -1,15 +1,11 @@
 import express from "express";
 import cors from "cors";
+import { projekt } from "./projekt.js";
 
 const app = express();
 const PORT = 3001;
 
 app.use(cors());
-
-const projekt = [
-  { id: 1, titel: "Min sida", teknik: "React" },
-  { id: 2, titel: "Väderapp", teknik: "React" },
-];
 
 app.get("/hej", (req, res) => {
   res.json({
@@ -48,6 +44,18 @@ app.get("/projekt/:id", (req, res) => {
   }
 
   res.json(hittat);
+});
+
+app.get("/projekt/teknik/:namn", (req, res) => {
+  const namn = req.params.namn.toLowerCase();
+  const resultat = projekt.filter(
+    (p) => p.teknik.toLowerCase() === namn
+  );
+  res.json(resultat);
+});
+
+app.get("/statistik", (req, res) => {
+  res.json({ antal: projekt.length });
 });
 
 app.listen(PORT, () => {
