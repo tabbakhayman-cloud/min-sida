@@ -11,6 +11,7 @@ import TodoList from "./components/Todo";
 import ProjektDetalj from "./pages/ProjektDetalj"; // 1. importera komponenten ProjektDetalj
 import MinServer from "./components/MinServer";
 import ProjektFranServer from "./components/ProjektFranServer";
+import ProjectsFromApi from "./components/ProjectsFromApi";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
     <Route path="/kontakt" element={<Kontakt />} />
     <Route path="/projekt" element={<ProjektSida />} />
     <Route path="/projekt/:id" element={<ProjektDetalj />} />
+    <Route path="/projekt-api" element={<ProjectsFromApi />} />
+    <Route path="/server" element={<MinServer />} />
     <Route
      path="/server"
      element={
