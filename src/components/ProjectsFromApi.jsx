@@ -6,6 +6,7 @@ export default function ProjectsFromApi() {
   const [projekt, setProjekt] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [deletingId, setDeletingId] = useState(null);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -28,6 +29,7 @@ export default function ProjectsFromApi() {
   async function deleteProject(id) {
     if (!confirm("Vill du ta bort projektet?")) return;
 
+    setDeletingId(id);
     try {
       const response = await fetch(SERVER_URL + "/" + id, { method: "DELETE" });
       if (!response.ok) {
@@ -36,6 +38,8 @@ export default function ProjectsFromApi() {
       setProjekt((prev) => prev.filter((p) => p.id !== id));
     } catch {
       setError("Kunde inte ta bort projektet. Är servern igång?");
+    } finally {
+      setDeletingId(null);
     }
   }
 
@@ -48,8 +52,12 @@ export default function ProjectsFromApi() {
         {projekt.map((p) => (
           <li key={p.id}>
             {p.titel} ({p.teknik}){" "}
-            <button className="delete-button" onClick={() => deleteProject(p.id)}>
-              Ta bort
+            <button
+              className="delete-button"
+              onClick={() => deleteProject(p.id)}
+              disabled={deletingId === p.id}
+            >
+              {deletingId === p.id ? "Tar bort..." : "Ta bort"}
             </button>
           </li>
         ))}

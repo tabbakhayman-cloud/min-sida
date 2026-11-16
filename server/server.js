@@ -7,6 +7,8 @@ const PORT = 3001;
 
 app.use(cors());
 
+app.use(express.json());
+
 app.use((req, res, next) => {
   console.log(new Date().toLocaleTimeString("sv-SE"), req.method, req.url);
   next();
@@ -73,6 +75,21 @@ app.delete("/projekt/:id", (req, res) => {
 
   projekt.splice(index, 1);
   res.status(204).end();
+});
+
+const meddelanden = [];
+
+app.post("/kontakt", (req, res) => {
+  const { namn, email, text } = req.body;
+
+  if (!text || text.trim() === "") {
+    return res.status(400).json({ fel: "Texten får inte vara tom" });
+  }
+
+  meddelanden.push({ namn, email, text });
+  console.log(`${namn} skrev: ${text}`);
+
+  res.status(201).json({ meddelande: "Tack!" });
 });
 
 app.listen(PORT, () => {

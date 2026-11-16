@@ -31,13 +31,13 @@ function Kontakt() {
 
     try {
       const svar = await fetch("https://formspree.io/f/xyeewbop", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({ namn, email: epost, meddelande }),
-      });
+       method: "POST",
+       headers: {
+       "Content-Type": "application/json",
+       Accept: "application/json",
+     },
+       body: JSON.stringify({ namn, email: epost, meddelande }),
+});
 
       if (svar.ok) {
         setSkickat(true);
@@ -45,6 +45,7 @@ function Kontakt() {
         setEpost("");
         setMeddelande("");
       } else {
+        const data = await svar.json();
         setFel("Något gick fel. Försök igen om en stund.");
       }
     } catch (err) {
