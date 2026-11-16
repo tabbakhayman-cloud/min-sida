@@ -45,7 +45,7 @@ function Kontakt() {
         setEpost("");
         setMeddelande("");
       } else {
-        const data = await svar.json();
+        
         setFel("Något gick fel. Försök igen om en stund.");
       }
     } catch (err) {

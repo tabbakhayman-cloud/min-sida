@@ -10,8 +10,8 @@ import EjHittad from "./pages/EjHittad";
 import TodoList from "./components/Todo";
 import ProjektDetalj from "./pages/ProjektDetalj"; // 1. importera komponenten ProjektDetalj
 import MinServer from "./components/MinServer";
-import ProjektFranServer from "./components/ProjektFranServer";
 import ProjectsFromApi from "./components/ProjectsFromApi";
+import ContactBackend from "./components/ContactBackend";
 
 function App() {
   return (
@@ -19,23 +19,15 @@ function App() {
       <Navbar />
       
       <Routes>
-    <Route path="/" element={<Hem />} />
-    <Route path="/om-mig" element={<OmMig />} />
-    <Route path="/kontakt" element={<Kontakt />} />
-    <Route path="/projekt" element={<ProjektSida />} />
-    <Route path="/projekt/:id" element={<ProjektDetalj />} />
-    <Route path="/projekt-api" element={<ProjectsFromApi />} />
-    <Route path="/server" element={<MinServer />} />
-    <Route
-     path="/server"
-     element={
-      <>
-        <MinServer />
-        <ProjektFranServer />
-      </>
-    }
-  />
-   <Route path="*" element={<EjHittad />} />
+  <Route path="/" element={<Hem />} />
+  <Route path="/om-mig" element={<OmMig />} />
+  <Route path="/kontakt" element={<Kontakt />} />
+  <Route path="/projekt" element={<ProjektSida />} />
+  <Route path="/projekt/:id" element={<ProjektDetalj />} />
+  <Route path="/projekt-api" element={<ProjectsFromApi />} />
+  <Route path="/server" element={<MinServer />} />
+  <Route path="/kontakt-server" element={<ContactBackend />} />
+  <Route path="*" element={<EjHittad />} />
 </Routes>
       <Footer />
       <TodoList />

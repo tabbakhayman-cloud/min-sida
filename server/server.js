@@ -82,14 +82,18 @@ const meddelanden = [];
 app.post("/kontakt", (req, res) => {
   const { namn, email, text } = req.body;
 
-  if (!text || text.trim() === "") {
-    return res.status(400).json({ fel: "Texten får inte vara tom" });
-  }
+  if (!namn || !text || text.trim() === "") {
+  return res.status(400).json({ fel: "Namn och meddelande måste fyllas i" });
+}
 
   meddelanden.push({ namn, email, text });
   console.log(`${namn} skrev: ${text}`);
 
   res.status(201).json({ meddelande: "Tack!" });
+});
+
+app.get("/kontakt", (req, res) => {
+  res.json(meddelanden);
 });
 
 app.listen(PORT, () => {
