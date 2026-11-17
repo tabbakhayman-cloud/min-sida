@@ -1,46 +1,88 @@
 .projekt-kort {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background: var(--portfolio-surface, #16232a);
+  border: 1px solid #243640;
+  border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   text-align: left;
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* إضافة تأثير الانتقال السلس للحركة */
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* تأثير الرفع عند تمرير الماوس (Block 3) */
+/* رفع الكرت عند تمرير الماوس */
 .projekt-kort:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  border-color: #5fc4b8;
 }
 
 .projekt-kort img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .projekt-kort h3 {
   margin: 15px 0 10px;
   font-size: 1.2rem;
-  color: #222;
+  color: #fff;
 }
 
 .projekt-kort p {
-  color: #666;
+  color: #9fb2b9;
   font-size: 0.95rem;
 }
 
-/* تنسيق شارة التقنية Badge (Block 3) */
+/* شارة التقنية */
+.teknik-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
 .teknik-badge {
   display: inline-block;
-  background-color: #7e2b60;
-  color: #ffffff;
+  background-color: rgba(95, 196, 184, 0.15);
+  border: 1px solid rgba(95, 196, 184, 0.5);
+  color: #5fc4b8;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 600;
   padding: 4px 10px;
   border-radius: 12px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.teknik-lista .teknik-badge {
+  margin: 0;
+}
+
+/* أزرار الروابط داخل الكرت */
+.projekt-knapp,
+.projekt-knapp-extern {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.projekt-knapp {
+  background: #d63d3d;
+  color: #fff;
+}
+
+.projekt-knapp:hover {
+  filter: brightness(1.1);
+}
+
+.projekt-knapp-extern {
+  border: 2px solid #5fc4b8;
+  color: #5fc4b8;
+}
+
+.projekt-knapp-extern:hover {
+  background: rgba(95, 196, 184, 0.15);
 }

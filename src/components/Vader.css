@@ -1,40 +1,38 @@
 .vader-section {
   padding: 40px 20px;
   text-align: left;
-  background-color: #fcf6fa;
-}
-
-.vader-kort {
-  max-width: 320px;
-  padding: 20px;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(74, 46, 81, 0.12);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 16px;
-  color: #2b2633;
-}
-
-.vader-fel {
-  color: #b3261e;
-  font-weight: 600;
+  background-color: transparent;
 }
 
 .vader {
   padding: 20px;
   margin: 20px 0;
-  background-color: #f9fafb;
-  border-radius: 8px;
+  background-color: var(--portfolio-surface, #16232a);
+  border: 1px solid #243640;
+  border-radius: 12px;
 }
 
 .vader h2 {
   margin-bottom: 15px;
-  color: #1f2937;
+  color: #fff;
 }
 
-/* استخدام Grid متجاوب يتكيف تلقائياً مع الشاشة */
+/* قائمة اختيار المدينة */
+.vader select {
+  padding: 8px 12px;
+  border: 1px solid #243640;
+  border-radius: 8px;
+  background: #0e1518;
+  color: #e8eef0;
+  font: inherit;
+}
+
+.vader select:focus-visible {
+  outline: 3px solid #5fc4b8;
+  outline-offset: 2px;
+}
+
+/* Grid متجاوب يتكيف تلقائياً مع الشاشة */
 .vader-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -42,20 +40,30 @@
 }
 
 .vader-kort {
-  background: #ffffff;
+  max-width: 320px;
   padding: 15px;
+  border: 1px solid #243640;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: #0e1518;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+  color: #d5e0e4;
   text-align: center;
 }
 
 .vader-kort h3 {
   margin-top: 0;
-  color: #111827;
+  color: #fff;
 }
 
 .vader-kort p {
   margin: 5px 0;
   font-size: 1.1rem;
+}
+
+.vader-fel {
+  color: #ff8a80;
+  font-weight: 600;
 }

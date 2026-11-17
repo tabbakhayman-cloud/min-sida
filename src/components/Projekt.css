@@ -1,33 +1,45 @@
 .projekt {
   padding: 40px 20px;
-  background-color: #ede9f6;
-  
+  background-color: transparent;
 }
 
 .projekt-lista {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 24px;
+}
+
+@media (min-width: 700px) {
+  .projekt-lista {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .projekt-lista {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 /* إجبار أي بطاقة مشروع على أخذ شكل مرتب */
 .projekt-kort, .projekt-item {
-  background: #ffffff;
+  background: var(--portfolio-surface, #16232a);
+  border: 1px solid #243640;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
 }
 
-/* القاعدة الأكيدة لجميع صور المشاريع: ارتفاع ثابت ومحدد */
+/* ارتفاع ثابت لصور المشاريع */
 .projekt img {
   width: 100%;
-  height: 220px;          /* ارتفاع ثابت يمنع امتداد الصورة بشكل نحيف */
-  object-fit: cover;      /* لتعبئة المساحة باحترافية ودون تشويه */
+  height: 220px;
+  object-fit: cover;
 }
 
-/* تنسيق أزرار الفلترة */
+/* أزرار الفلترة */
 .projekt-filter {
   display: flex;
   flex-wrap: wrap;
@@ -39,25 +51,26 @@
 .filter-knapp {
   min-height: 44px;
   padding: 8px 16px;
-  border: 2px solid #7e2b60;
+  border: 2px solid #e5575b;
   border-radius: 999px;
-  background-color: #ffffff;
-  color: #7e2b60;
+  background-color: transparent;
+  color: #e5575b;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
 .filter-knapp:hover {
-  background-color: #ede9f6;
+  background-color: rgba(229, 87, 91, 0.15);
 }
 
 .filter-knapp.aktiv {
-  background-color: #7e2b60;
-  color: #fcf6fa;
+  background-color: #d63d3d;
+  border-color: #d63d3d;
+  color: #fff;
 }
 
-/* تنسيق شريط البحث */
+/* شريط البحث */
 .projekt-sok {
   display: flex;
   flex-direction: column;
@@ -70,21 +83,28 @@
 
 .projekt-sok input {
   padding: 10px 12px;
-  border: 1px solid #c9bfd8;
+  border: 1px solid #243640;
   border-radius: 8px;
+  background: var(--portfolio-surface, #16232a);
+  color: #e8eef0;
   font: inherit;
+}
+
+.projekt-sok input:focus-visible {
+  outline: 3px solid #5fc4b8;
+  outline-offset: 2px;
 }
 
 .projekt-antal {
   margin-bottom: 24px;
-  color: #6b6480;
+  color: #8fa3ab;
   font-size: 14px;
 }
 
 .projekt-tom {
   padding: 32px;
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: var(--portfolio-surface, #16232a);
 }
 
 @media (min-width: 600px) {

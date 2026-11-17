@@ -1,0 +1,31 @@
+.cityweather {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #243640;
+  border-radius: 12px;
+  background-color: var(--portfolio-surface, #16232a);
+}
+
+.cityweather h3 {
+  margin: 0 0 15px;
+  color: #fff;
+}
+
+.cityweather select {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border: 1px solid #243640;
+  border-radius: 8px;
+  background: #0e1518;
+  color: #e8eef0;
+  font: inherit;
+}
+
+.cityweather p {
+  margin: 6px 0;
+  color: #d5e0e4;
+}
+
+.cityweather strong {
+  color: #fff;
+}

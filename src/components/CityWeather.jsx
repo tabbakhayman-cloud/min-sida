@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { STADER } from "../data/stader";
 import { grader } from "../utils/text";
+import "./CityWeather.css";
 
 const BAS_URL = "https://api.open-meteo.com/v1/forecast";
 
@@ -35,9 +36,9 @@ function CityWeather() {
   }, [selectedCity]);
 
   return (
-    <div style={{ padding: "20px", background: "#f1f5f9", borderRadius: "8px", margin: "20px 0" }}>
+    <div className="cityweather">
       <h3>Välj stad för väder</h3>
-      <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} style={{ padding: "8px", marginBottom: "15px" }}>
+      <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
         {STADER.map((city) => (
           <option key={city.namn} value={city.namn}>
             {city.namn}

@@ -1,63 +1,62 @@
-import { useState, useEffect } from "react";
-import { STADER } from "../data/stader"; // التأكد من مطابقة اسم الاستيراد مع ملف stader.js
-import { grader } from "../utils/text";
+import { useState } from "react";
+import TodoItem from "./TodoItem";
+import "./Todo.css";
 
-const BAS_URL = "https://api.open-meteo.com/v1/forecast";
+function Todo() {
+  const [todos, setTodos] = useState([]);
+  const [text, setText] = useState("");
 
-function CityWeather() {
-  const [selectedCity, setSelectedCity] = useState(STADER[0].namn);
-  const [weather, setWeather] = useState(null);
-  const [laddar, setLaddar] = useState(true);
+  function addTodo(e) {
+    e.preventDefault();
+    if (text.trim() === "") return;
+    setTodos((prev) => [
+      ...prev,
+      { id: Date.now(), text: text.trim(), completed: false },
+    ]);
+    setText("");
+  }
 
-  useEffect(() => {
-    async function hamtaValdStad() {
-      setLaddar(true);
-      const city = STADER.find((c) => c.namn === selectedCity);
-      if (!city) return;
+  function toggleTodo(id) {
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+    );
+  }
 
-      try {
-        const url = `${BAS_URL}?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,wind_speed_10m`;
-        const svar = await fetch(url);
-        const data = await svar.json();
-
-        setWeather({
-          temp: data.current.temperature_2m,
-          vind: data.current.wind_speed_10m,
-        });
-      } catch (err) {
-        console.error("Kunde inte hämta väder", err);
-      } finally {
-        setLaddar(false);
-      }
-    }
-
-    hamtaValdStad();
-  }, [selectedCity]);
+  function removeTodo(id) {
+    setTodos((prev) => prev.filter((t) => t.id !== id));
+  }
 
   return (
-    <div style={{ padding: "20px", background: "#f1f5f9", borderRadius: "8px", margin: "20px 0" }}>
-      <h3>Välj stad för väder</h3>
-      <select value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} style={{ padding: "8px", marginBottom: "15px" }}>
-        {STADER.map((city) => (
-          <option key={city.namn} value={city.namn}>
-            {city.namn}
-          </option>
-        ))}
-      </select>
+    <section className="todo">
+      <h2>Att göra</h2>
 
-      {laddar ? (
-        <p>Laddar väder för {selectedCity}...</p>
-      ) : weather ? (
-        <div>
-          <p><strong>Stad:</strong> {selectedCity}</p>
-          <p>🌡️ Temperatur: {grader(weather.temp)}</p>
-          <p>💨 Vind: {weather.vind} m/s</p>
-        </div>
+      <form className="todo-form" onSubmit={addTodo}>
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Lägg till en uppgift"
+          aria-label="Ny uppgift"
+        />
+        <button type="submit">Lägg till</button>
+      </form>
+
+      {todos.length === 0 ? (
+        <p className="todo-tom">Inga uppgifter än.</p>
       ) : (
-        <p>Kunde inte ladda väder.</p>
+        <ul className="todo-lista">
+          {todos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              onToggle={toggleTodo}
+              onRemove={removeTodo}
+            />
+          ))}
+        </ul>
       )}
-    </div>
+    </section>
   );
 }
 
-export default CityWeather;
+export default Todo;

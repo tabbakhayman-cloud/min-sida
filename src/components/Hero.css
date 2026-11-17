@@ -5,9 +5,8 @@
   gap: 32px;
   padding: 40px 20px 48px;
   text-align: left;
-  background-color: #fdf1f8;
-  color: #3e3a4e;
-  background: linear-gradient(135deg, #fdf2f8 0%, #f5f3ff 100%);
+  color: var(--portfolio-text);
+  background: var(--portfolio-background);
 }
 
 .hero-innehall {
@@ -15,19 +14,14 @@
 }
 
 .hero-etikett {
-  margin: 0 0 1rem;
-  color: var(--portfolio-accent);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  display: none; /* dubbel med navbaren, se anteckning */
 }
 
 .hero h1 {
   margin: 0 0 1.25rem;
-  color: var(--portfolio-text);
+  color: #fff;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   line-height: 1.08;
 }
 
@@ -46,15 +40,15 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 1.25rem;
-  box-shadow: 0 1.5rem 3.5rem rgb(59 35 54 / 14%);
+  box-shadow: 0 1.5rem 3.5rem rgb(0 0 0 / 45%);
 }
 
 .hero-knapp {
   display: inline-block;
   padding: 0.9rem 1.4rem;
-  border: 2px solid var(--portfolio-accent);
+  border: 2px solid var(--portfolio-accent, #d63d3d);
   border-radius: 0.65rem;
-  background-color: var(--portfolio-accent);
+  background-color: var(--portfolio-accent, #d63d3d);
   color: #fff;
   font-weight: 600;
   text-decoration: none;
@@ -63,7 +57,7 @@
 
 .hero-knapp:hover {
   background-color: transparent;
-  color: var(--portfolio-accent);
+  color: #e5575b;
 }
 
 @media (min-width: 800px) {
