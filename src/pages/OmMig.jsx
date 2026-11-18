@@ -26,20 +26,9 @@ function OmMig() {
         <Statistik /> {/* 3. Visa komponenten Statistik här */}
 
         {/* Toggle-knapp */}
-        <button 
-          onClick={() => setVisas(!visas)}
-          style={{
-            padding: '8px 16px',
-            backgroundColor: '#7e2b60',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            marginBottom: '15px'
-          }}
-        >
-          {visas ? "Visa mindre" : "Läs mer om mig"}
-        </button>
+        <button className="om-mig-knapp" onClick={() => setVisas(!visas)}>
+        {visas ? "Visa mindre" : "Läs mer om mig"}
+         </button>
 
         {/* Text och lista som visas/döljs baserat på visas-state */}
         {visas && (

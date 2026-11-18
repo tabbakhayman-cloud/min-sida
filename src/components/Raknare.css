@@ -1,0 +1,48 @@
+.raknare {
+  max-width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #243640;
+  border-radius: 12px;
+  background: var(--portfolio-surface, #16232a);
+  text-align: center;
+}
+
+.raknare h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.raknare-siffra {
+  margin: 15px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff8a80;
+}
+
+.raknare-siffra.positiv {
+  color: #6fcf97;
+}
+
+.raknare-knappar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.raknare-knappar button {
+  padding: 8px 16px;
+  font-size: 18px;
+}
+
+.raknare-nollstall {
+  padding: 6px 12px;
+  border: 1px solid #e5575b;
+  background: transparent;
+  color: #e5575b;
+}
+
+.raknare-nollstall:hover {
+  background: rgba(229, 87, 91, 0.15);
+}

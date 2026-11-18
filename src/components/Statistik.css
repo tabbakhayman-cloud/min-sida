@@ -1,0 +1,49 @@
+.statistik-box {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #243640;
+  border-radius: 12px;
+  background: var(--portfolio-surface, #16232a);
+}
+
+.statistik-box h3 {
+  margin: 0 0 12px;
+  color: #fff;
+}
+
+.statistik-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.statistik-rad {
+  padding: 8px 0;
+  border-bottom: 1px solid #243640;
+}
+
+.statistik-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  color: #b7c6cc;
+}
+
+.statistik-text strong {
+  color: #fff;
+}
+
+.statistik-bar {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #0e1518;
+}
+
+.statistik-fyllning {
+  height: 100%;
+  border-radius: 4px;
+  background: #5fc4b8;
+  transition: width 0.3s ease;
+}
