@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">Min Portfolio</div>
+      <div className="logo">AYMAN TABBAKH</div>
 
       {/* زر الهامبرجر للموبايل */}
       <button

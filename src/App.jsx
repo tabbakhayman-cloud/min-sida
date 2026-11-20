@@ -7,7 +7,6 @@ import OmMig from "./pages/OmMig";
 import ProjektSida from "./pages/ProjektSida";
 import Kontakt from "./pages/Kontakt";
 import EjHittad from "./pages/EjHittad";
-import TodoList from "./components/Todo";
 import ProjektDetalj from "./pages/ProjektDetalj"; // 1. importera komponenten ProjektDetalj
 import MinServer from "./components/MinServer";
 import ProjectsFromApi from "./components/ProjectsFromApi";
@@ -30,7 +29,6 @@ function App() {
   <Route path="*" element={<EjHittad />} />
 </Routes>
       <Footer />
-      <TodoList />
     </>
   );
 }
